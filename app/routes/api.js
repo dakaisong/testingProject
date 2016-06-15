@@ -36,6 +36,24 @@ module.exports =function (app,express) {
         })
     });
 
+    api.get('/signup',function (req,res) {
+        var path= require('path')
+        res.sendFile(path.resolve('public/app/views/signup.html'));
+    })
+    
+    api.get('/loginPage',function (req,res) {
+        console.log("user require a login page");
+        var path= require('path')
+        res.sendFile(path.resolve('public/app/views/loginPage.html'));
+
+    })
+    
+    
+
+
+
+
+
     //use find function to read all the data from database.
     api.get('/users',function (req,res) {
         User.find({},function (err,users) {

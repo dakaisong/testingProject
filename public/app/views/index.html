@@ -22,26 +22,18 @@
 <body>
 {{5+5}}
 
-    <div class="container" ng-controller = "AppCtrl">
 
-        <h1>User list App</h1>
+<div ng-init ="loginPage ='api/loginPage' ">
+<p><a ng-href="{{loginPage}}">Login</a></p>
+</div>
 
-        <table class="table">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Username</th>
-                <th>Password</th>
-            </tr>
-        </thead>
-            <tbody>
-                <td><input class="form-control" ng-model="user.username"></td>
-                <td><input class="form-control" ng-model="user.name"></td>
-                <td><input class="form-control" ng-model="user.password"></td>
-                <td><button class="btn btn-primary" ng-click="addUser()">Register</button> </td>
-            </tbody>
-        </table>
-        </div>
+<div ng-init ="signUp ='api/signup' ">
+    <p><a ng-href="{{signUp}}">Register</a></p>
+</div>
+
+<div ng-init ="home ='/' ">
+    <p><a ng-href="{{home}}">Logout</a></p>
+</div>
 
 
 </body>
