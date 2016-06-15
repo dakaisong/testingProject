@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html ng-app="MyApp">
+<html ng-app="myApp">
 
 <head>
     <base href="/">
@@ -8,22 +8,40 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/2.0.0-beta.17/router.js"></script>
+
+ <script type="text/javascript" src="../controllers/controller.js"></script>
 <!-- services-->
 
-<script type="text/javascript" src="../services/authService.js"></script>
-
     <!---controllers-->
-<script type="text/javascript" src="../controllers/controller.js"></script>
 
-<script type="text/javascript" src="../app.routes.js"></script>
-<script type="text/javascript" src="../controllers/mainController.js"></script>
+
+
 
     <title>User Story</title>
 </head>
 <body>
+{{5+5}}
 
-<div ng-view></div>
+    <div class="container" ng-controller = "AppCtrl">
+
+        <h1>User list App</h1>
+
+        <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Password</th>
+            </tr>
+        </thead>
+            <tbody>
+                <td><input class="form-control" ng-model="user.username"></td>
+                <td><input class="form-control" ng-model="user.name"></td>
+                <td><input class="form-control" ng-model="user.password"></td>
+                <td><button class="btn btn-primary" ng-click="addUser()">Register</button> </td>
+            </tbody>
+        </table>
+        </div>
 
 
 </body>

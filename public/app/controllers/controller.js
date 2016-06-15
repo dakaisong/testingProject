@@ -1,5 +1,14 @@
-/**
- * Created by AlphTech-Don on 6/14/2016.
- */
+var myApp = angular.module('myApp', []);
 
-angular.module('MyApp',['appRoutes','mainCtrl','authService']);
+myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
+    console.log("Hello World from controller");
+
+    
+    $scope.addUser = function () {
+        console.log($scope.user);
+        $http.post('/api/signup', $scope.user).success(function (response) {
+            console.log(response);
+        });
+    }
+}]
+)﻿

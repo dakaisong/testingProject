@@ -26,8 +26,8 @@ app.use(bodyParser.json());
 app.use(morgan('dev'));
 
 // use the view in public
-//use
-app.use(express.static(__dirname + '/public'));
+
+app.use(express.static(__dirname + '/public/app'));
 
 //function use to call api don't miss (app,express)
 var api=require('./app/routes/api')(app,express);

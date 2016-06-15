@@ -11,22 +11,6 @@ var config = require('../../config');
 
 var secretKey=config.secretKey;
 
-var jsonwebtoken = require('jsonwebtoken');
-
-//use a local function to create a token to compare the password
-function createToken(user) {
-
-      var token = jsonwebtoken.sign({
-            id: user._id,
-            name:user.name,
-            username:user.username
-        },secretKey,{
-
-        });
-    return token;
-}
-
-//using module. exports that is like import, so you can call is function in other files.
 
 module.exports =function (app,express) {
 
@@ -34,7 +18,9 @@ module.exports =function (app,express) {
 
     //use a post function to save a user's information
     api.post('/signup',function (req,res) {
-       var user = new User({
+       
+        console.log(req.body)
+        var user = new User({
            name : req.body.name,
            username:req.body.username,
            password:req.body.password
@@ -77,11 +63,9 @@ module.exports =function (app,express) {
                     res.send({message: "Invalid Password"});
                 }else {
                     //token
-                    var token = createToken(user);
                     res.json({
                         success: true,
                         message:"successfully login!",
-                        token:token
                     });
                 }
             }
@@ -93,7 +77,7 @@ module.exports =function (app,express) {
     api.use(function (req,res,next) {
        console.log("Someone just get the app");
 
-        var token=req.body.token || req.param('token') || req.headers['x-access-token'];
+        // var token=req.body.token || req.param('token') || req.headers['x-access-token'];
 
         if (token){
             jsonwebtoken.verify(token,secretKey,function (err,decoded) {
