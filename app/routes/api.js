@@ -36,10 +36,14 @@ module.exports =function (app,express) {
         })
     });
 
+    
+    
     api.get('/signup',function (req,res) {
         var path= require('path')
         res.sendFile(path.resolve('public/app/views/signup.html'));
     })
+    
+    
     
     api.get('/loginPage',function (req,res) {
         console.log("user require a login page");
@@ -55,23 +59,19 @@ module.exports =function (app,express) {
 
 
     //use find function to read all the data from database.
-    api.get('/users',function (req,res) {
-        User.find({},function (err,users) {
-            if (err){
-                res.send(err);
-            }else {
-                res.json(users);
-            }
-        });
-    });
     
+  
     api.post('/login',function (req,res) {
+
+        console.log('come to login');
+        console.log(req.body);
         User.findOne({
             username: req.body.username
         }).select('password').exec(function (err,user) {
             if (err) throw err;
 
             if (!user){
+                console.log('no such user');
                 res.send({message: "user doesn't exist"});
             }else if (user){
                     console.log("compare password");
@@ -81,17 +81,43 @@ module.exports =function (app,express) {
                     res.send({message: "Invalid Password"});
                 }else {
                     //token
+                    console.log(user._id);
+                    User.findOne({_id:user._id},function (err,result) {
+                        if (err){
+                            console.log(err)
+                        }else {
+                            console.log(result);
+                            res.json(result);
+                        }
+                    })
+                    /*
                     res.json({
                         success: true,
                         message:"successfully login!",
                     });
+                    */
                 }
             }
         });
 
     });
-//after login will use below function
+
     
+    api.use(function (req,res,next) {
+
+        console.log("Some one just get the app");
+        var token = req.body.token || req.param('token')
+        User.find(function (err,users) {
+            if (err){
+                res.send(err);
+            }else {
+                res.json(users);
+            }
+        });
+    });
+
+//after login will use below function
+    /*
     api.use(function (req,res,next) {
        console.log("Someone just get the app");
 
@@ -118,7 +144,7 @@ module.exports =function (app,express) {
         res.json("hello");
         
     });
-*/
+
     api.route('/')
 
         .post(function (req,res) {
@@ -149,7 +175,7 @@ module.exports =function (app,express) {
     api.get('/me',function (req,res) {
         res.json(req.decoded);
     })
-
+*/
     return api
 
 

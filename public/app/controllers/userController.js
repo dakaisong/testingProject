@@ -2,7 +2,7 @@
 
 var userLogin = angular.module('userLogin', []);
 
-myApp.controller('LoginController', ['$scope', '$http', function($scope, $http) {
+userLogin.controller('LoginController', ['$scope', '$http', function($scope, $http) {
         console.log("Hello World from user controller");
 
 
@@ -12,5 +12,22 @@ myApp.controller('LoginController', ['$scope', '$http', function($scope, $http) 
                 console.log(response);
             });
         }
+    
+        $scope.login=function () {
+            console.log($scope.user);
+            $http.post('/api/login',$scope.user).success(function (response) {
+                getUserInfo();
+            })
+        }
+        
+        var getUserInfo =function () {
+            $http.get('/api/users').success(function (response) {
+                console.log("I got the data I requested");
+                $scope.userlist = response;
+                $scope.user = "";
+            });
+        }
+
+    
     }]
 )
