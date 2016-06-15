@@ -6,9 +6,9 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
     
     $scope.addUser = function () {
         console.log($scope.user);
-        $http.post('/api/signup', $scope.user).success(function (response) {
+        $http.post('/api/signup', $scope.user).success(function(response) {
             console.log(response);
         });
     }
 }]
-)﻿
+)
