@@ -9,7 +9,11 @@
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
 
+    <script type="text/javascript" src="../angular-cookies.js"></script>
+
     <script type="text/javascript" src="../controllers/userController.js"></script>
+
+
     <!-- services-->
 
     <!---controllers-->
@@ -35,6 +39,7 @@
         <td><input class="form-control" ng-model="user.username"></td>
         <td><input class="form-control" ng-model="user.password"></td>
         <td><button class="btn btn-primary" ng-click="login()" >Register</button> </td>
+            <td><button class="btn btn-primary" ng-click="testCookies()" >testCookies</button> </td>
         </tr>
         <tr ng-repeat="user in userlist">
             <td>{{user.username}}</td>
