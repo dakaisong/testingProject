@@ -12,5 +12,6 @@
     <orderEntry type="library" name="node-DefinitelyTyped" level="application" />
     <orderEntry type="library" name="mongodb-DefinitelyTyped" level="application" />
     <orderEntry type="library" name="jsonwebtoken-DefinitelyTyped" level="application" />
+    <orderEntry type="library" name="educationApp node_modules" level="project" />
   </component>
 </module>

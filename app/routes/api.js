@@ -52,11 +52,6 @@ module.exports =function (app,express) {
 
     })
     
-    
-
-
-
-
 
     //use find function to read all the data from database.
     
@@ -102,11 +97,20 @@ module.exports =function (app,express) {
 
     });
 
-    
-    api.use(function (req,res,next) {
 
+    api.get('/home',function (req,res) {
+        console.log("get home");
+        var path= require('path');
+        res.sendFile(path.resolve('public/app/views/home.html'));
+
+    })
+    /*
+    api.use(function (req,res,next) {
+        
         console.log("Some one just get the app");
-        var token = req.body.token || req.param('token')
+
+        var token = req.body.token || req.param('token') || req.headers['x-access-token'];
+        if (token){
         User.find(function (err,users) {
             if (err){
                 res.send(err);
@@ -114,10 +118,21 @@ module.exports =function (app,express) {
                 res.json(users);
             }
         });
+
+        }else {
+            console.log('login first');
+        }
+
+
+
+        next();
     });
 
+  */
+
+
 //after login will use below function
-    /*
+/*
     api.use(function (req,res,next) {
        console.log("Someone just get the app");
 
@@ -139,7 +154,7 @@ module.exports =function (app,express) {
         }
 
     });
-    /*
+
     api.get('/',function (req,res) {
         res.json("hello");
         
@@ -163,19 +178,15 @@ module.exports =function (app,express) {
         })
 
         .get(function (req,res) {
-        Story.find({creator:req.decoded.id},function (err,stories) {
-            if (err){
-                res.send(err);
-                return;
-            }
-            res.json(stories);
-        })
+
     })
 
     api.get('/me',function (req,res) {
         res.json(req.decoded);
     })
 */
+
+
     return api
 
 
