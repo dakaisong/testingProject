@@ -5,9 +5,10 @@
 // use is to control your data
 
 var User = require('../models/user');
-var Story=require('../models/story');
-
+var jwt = require('jwt-simple');
 var config = require('../../config');
+
+
 
 var secretKey=config.secretKey;
 
@@ -32,6 +33,7 @@ module.exports =function (app,express) {
                 res.send(err);
             }else {
                 res.json({message:'User has been created!!'});
+                console.log('user is created');
             }
         })
     });
@@ -76,6 +78,7 @@ module.exports =function (app,express) {
                     res.send({message: "Invalid Password"});
                 }else {
                     //token
+                    /*
                     console.log(user._id);
                     User.findOne({_id:user._id},function (err,result) {
                         if (err){
@@ -85,12 +88,15 @@ module.exports =function (app,express) {
                             res.json(result);
                         }
                     })
-                    /*
+                    */
+                    var token=jwt.encode(user,secretKey);
+                  
                     res.json({
                         success: true,
                         message:"successfully login!",
+                        token : token
                     });
-                    */
+                    
                 }
             }
         });
@@ -98,37 +104,41 @@ module.exports =function (app,express) {
     });
 
 
-    api.get('/home',function (req,res) {
-        console.log("get home");
-        var path= require('path');
-        res.sendFile(path.resolve('public/app/views/home.html'));
-
-    })
-    /*
+    
+    
     api.use(function (req,res,next) {
         
         console.log("Some one just get the app");
 
-        var token = req.body.token || req.param('token') || req.headers['x-access-token'];
+        var token = req.body;
+        console.log(token);
+
         if (token){
+            console.log('find user')
         User.find(function (err,users) {
             if (err){
                 res.send(err);
             }else {
+                console.log("this is user info")
                 res.json(users);
+                next();
             }
         });
-
         }else {
             console.log('login first');
         }
-
-
-
-        next();
+        
+       
     });
 
-  */
+    api.get('/',function (req,res) {
+        console.log("get home");
+        res.send('you get to home');
+       /*
+       var path= require('path');
+        res.sendFile(path.resolve('public/app/views/home.html'));
+        */
+    })
 
 
 //after login will use below function
