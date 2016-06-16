@@ -1,23 +1,37 @@
 <!DOCTYPE html>
 
-<html ng-app="">
+<html ng-app="MyApp">
 
 <head>
     <base href="/">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
 
-    <script type="text/javascript" src="../controllers/userController.js"></script>
+    <script type="text/javascript" src="../controllers/main.js"></script>
 
 </head>
 <body>
 {{8+8}}
 
-    <h1>User information</h1>
 
+<div class="jumbotron" align="center">
+    <h1>Online-EDU</h1>
+    <p>Resize this responsive page to see the effect!</p>
+</div>
+<div class="row">
+    <div class="col-sm-2">
+        <div class="list-group" ng-init ="student ='api/home/student' ">
+            <a ng-href="{{student}}" class="list-group-item active">Mange Student</a>
+            <a href="#TeacherManagement" class="list-group-item">Mange teacher</a>
 
+        </div>
+
+    </div>
+    <div class="col-sm-10">
+        <div ng-view></div>
 
 </body>
 </html>

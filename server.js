@@ -7,6 +7,7 @@ var morgan=require('morgan');
 
 var mongoose= require('mongoose');
 var config=require('./config');
+var ejs = require('ejs');
 
 var app = express();
 
@@ -34,8 +35,9 @@ var api=require('./app/routes/api')(app,express);
 app.use('/api',api);
 
 
-app.get('*',function (req,res) {
-    res.sendFile(__dirname + '/public/app/views/index.html');
+app.get('/',function (req,res) {
+    //res.sendFile(__dirname + '/public/app/views/index.html');
+    return res.redirect('/')
 });
 
 

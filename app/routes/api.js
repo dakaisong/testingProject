@@ -97,13 +97,14 @@ module.exports =function (app,express) {
 
     });
 
-
     api.get('/home',function (req,res) {
         console.log("get home");
         var path= require('path');
         res.sendFile(path.resolve('public/app/views/home.html'));
 
-    })
+    });
+ 
+
     /*
     api.use(function (req,res,next) {
         

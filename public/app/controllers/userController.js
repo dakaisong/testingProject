@@ -2,7 +2,9 @@
 
 var userLogin = angular.module('userLogin', []);
 
-userLogin.controller('LoginController', ['$scope', '$http','$window','$location', function($scope, $http,$window,$state) {
+
+
+userLogin.controller('LoginController', ['$scope', '$http','$window','$location', function($scope, $http,$window,$location) {
         console.log("Hello World from user controller");
 
 
@@ -15,7 +17,7 @@ userLogin.controller('LoginController', ['$scope', '$http','$window','$location'
             })
 
         }
-    
+
         $scope.login=function (res,req,next) {
             console.log($scope.user);
             $http.post('/api/login',$scope.user).success(function (response) {
@@ -23,15 +25,27 @@ userLogin.controller('LoginController', ['$scope', '$http','$window','$location'
                 })
 
         }
-        
+
         var getUserInfo =function () {
                 console.log('get next page');
 
                 $window.location.href='/api/login/home';
 
+
+            $http.post('/api/login',$scope.user).success(function (response){
+                getUserInfo();
+                $window.location.href='/api/home'
+            })
         }
 
+        var getUserInfo =function () {
+            $http.get('/api/home').success(function (response) {
+                console.log("I got the data I requested");
+                $window.location.href='/api/home'
+            });
 
+        }
     
     }]
 )
+
