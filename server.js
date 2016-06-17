@@ -3,8 +3,8 @@
  * 问题：登录首页后，ANGULAR路由无法显示页面
  * 已将路由交个angular
  * 关联文件包括index。html在public views里
- * controller。js 在public app controller里
- * 
+ * controller。js 在public app control
+ *
  */
 var express = require('express');
 var bodyParser = require('body-parser');

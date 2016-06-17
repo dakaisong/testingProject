@@ -5,7 +5,7 @@ myApp.config(
         $routeProvider
             .when("/login", {
                 templateUrl :'public/views/index.html',
-                message:"11111"
+                message:"111"
             })
             .otherwise({
                 redirectTo:'/',
@@ -16,7 +16,7 @@ myApp.config(
     }
 );
 myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
-    console.log("Hello World from controller");
+    console.log("Hello World from cohhhhntroller");
     
 }]
 );
