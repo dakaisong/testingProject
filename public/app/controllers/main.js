@@ -8,7 +8,6 @@ MyApp.config(
             .when("api/home/student", {
                 templateUrl : "public/app/views/pages/StudentManagement.html",
                 message:"11111"
-
             })
             .otherwise("/TeacherManagement", {
                 templateUrl : "/TeacherManagement.html"

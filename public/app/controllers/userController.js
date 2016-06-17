@@ -23,7 +23,7 @@ userLogin.controller('LoginController', ['$scope', '$http','$window','$location'
                     $scope.token = res.data.token;
                     $cookies.put('token',res.data.token);
                     console.log($cookies.get('token'));
-                    //$window.location.href='/api/home';
+                    $window.location.href='/api/home';
                 });
             
 

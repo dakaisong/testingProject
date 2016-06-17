@@ -3,13 +3,12 @@
 <html ng-app="myApp">
 
 <head>
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
-
- <script type="text/javascript" src="../controllers/controller.js"></script>
+ <base href="/">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.js"></script>
+    <script type="text/javascript" src="../controllers/controller.js"></script>
 
 
     <title>User LOgin</title>
@@ -18,11 +17,11 @@
 {{5+5}}
 
 
-<div ng-init ="loginPage ='api/loginPage' ">
+<div ng-init ="loginPage ='/loginPage' ">
 <p><a ng-href="{{loginPage}}">Login</a></p>
 </div>
 
-<div ng-init ="signUp ='api/signup' ">
+<div ng-init ="signUp ='/signup' ">
     <p><a ng-href="{{signUp}}">Register</a></p>
 </div>
 

@@ -47,7 +47,7 @@ module.exports =function (app,express) {
     
     api.get('/loginPage',function (req,res) {
         console.log("user require a login page");
-        var path= require('path')
+        var path= require('path');
         res.sendFile(path.resolve('public/app/views/loginPage.html'));
 
     })
