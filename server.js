@@ -50,7 +50,7 @@ app.get('/',function (req,res) {
 app.use(function (req,res) {
     console.log(req.path);
     if(req.path.indexOf('/api')>=0){
-        res.send('server text')
+        res.send('server text is show here');
     }else{
         res.redirect(__dirname + '/public/app/views/index.html')
     }
