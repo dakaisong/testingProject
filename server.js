@@ -1,7 +1,7 @@
 /**
  * Created by AlphTech-Don on 6/14/2016.
  * 问题：登录首页后，ANGULAR路由无法显示页面
- * 已将路由交个angular
+ * 已将路由交个ang
  * 关联文件包括index。html在public views里
  * controller。js 在public app control
  *
