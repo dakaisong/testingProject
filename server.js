@@ -16,7 +16,7 @@ var ejs = require('ejs');
 
 var app = express();
 
-//use mongoose and coonfig document to connect online mlab database
+//use mongoose and coonfig document to connect12121 online mlab database
 mongoose.connect(config.database,function (err) {
     if(err){
         console.log(err);
